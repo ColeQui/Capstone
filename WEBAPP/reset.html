@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>Reset Your Password</title>
+		<link rel="stylesheet" type="text/css" href="reset.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"
+		<link href="https://fonts.googleapis.com/css?family=Play"
+		rel="stylesheet">
+			<style>	
+#msg {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: yellow;
+	color: #000;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 30%;
+	top: 30px;
+	font-size: 17px;
+}
+#msg.show{
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+@keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+
+		</style> 
+	</head>
+	<body>
+	<div class="reset">
+		<form>
+		<h2 align="center" style="color:#fff;">Reset Password</h2>
+		<p>Old Password</p>
+		<input type="password" name="pass" placeholder="Enter Old password">
+		<br>
+		<p>New Password</p>
+		<input type="password" name="pass" placeholder="Enter New password">
+		<br>
+		<p>Confirm Password</p>
+		<input type="password" name="pass" placeholder="Confirm password"> 
+		<br><br><br>
+
+		</form>	
+		<input type="button" id="save" value="Save Changes" onclick="myFunction();">
+		<div id="msg">Your password changed successfully!!</div>
+		<br><br>
+
+		<a href="login.html" style="color: yellow; font-size: 13px; margin-left: 50px; font-family: Tahoma, Geneva, sans-serif;">Go back to Home page</a><br /><br /><br />
+
+
+		<script>
+		function myFunction() {
+			var x = document.getElementById("msg");
+			x.className = "show";
+			setTimeout(function(){ x.className = 
+			x.className.replace("show", ""); }, 3000);
+		}
+		</script>
+
+	</div>
+	</body>
+</html>

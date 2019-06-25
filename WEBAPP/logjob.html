@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Create A Job</title>
+		<link rel="stylesheet" type="text/css" href="logjob.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Play"
+		rel="stylesheet">
+
+		<style>	
+		.container{overflow: hidden}
+		.tab{float: left;}
+		.tab-2{margin-left: 50px;}
+		.tab-2 input{display: block; margin-bottom: 10px;}
+		tr{transition: all .25s ease-in-out}
+		tr:hover{background-color: red;cursor: pointer;}
+#msg {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: yellow;
+	color: #000;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 30%;
+	top: 30px;
+	font-size: 17px;
+}
+#msg.show{
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+@keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+	</style> 
+	</head>
+	<body>
+		<div class="logjob">
+		<h2 align="center" style="color: #fff;">Create A Job</h2>
+		<div class="tab tab-2">
+		Fault Summary: <input type="text" name="summary" id="summary">
+		<br>
+		Fault Description: <input type="text" name="descr" id="descr">
+		<br>
+		Is the equipment or building under warranty?
+		If yes- Contact
+		emergency or Supplier. <br>Equipment NOT under warrant? <input type="checkbox" name="">
+		<br>
+		Contractor Name: <input type="text" name="contractor" id="contractor">
+		<br>
+		Contractor Details: <input type="text" name="dets" id="dets">
+		<br>
+		After Hour Details: <input type="text" name="afterhr" id="afterhr">
+		<br>
+		Store has contacted the above Contractor to fault find over the phone
+		<p>Contractor Phoned?</p><input type="checkbox" name="">
+		<br>
+		Job Type: <input type="text" name="jobtype" id="jobtype">
+		<br>
+		</div>
+		<div class="tab tab-1">
+		<table id="table" border="1">
+			<tr>
+				<th>Fault Summary</th>
+				<th>Fault Description</th>
+				<th>Contractor Name</th>
+				<th>Contractor Details</th>
+				<th>After Hour Details</th>
+				<th>Job Type</th>
+			</tr>
+
+			<tr>
+				<td>Short Circuit</td>
+				<td>Short circuit</td>
+				<td>John Smith</td>
+				<td>02108796635</td>
+				<td>None</td>
+				<td>Electrical</td>
+			</tr>
+
+			<tr>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+
+			<tr>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+		</table><br>
+
+		<input type="submit" value="Add Item" onclick="addRow();">
+		<input type="submit" value="Update Item" onclick="updateRow();">
+		<input type="submit" value="Delete Item" onclick="deleteRow();">
+		<br><br>
+		<a href="index.html"><input type="submit" value="Return">
+		</div><br>
+
+<script>
+		var rIndex,
+			table = document.getElementById("table");
+
+	// check the empty input 
+	function checkEmpty()
+	{
+		var isEmpty = false,
+			summary = document.getElementById("summary").value,
+			descr = document.getElementById("descr").value,
+			contractor = document.getElementById("contractor").value,
+			dets = document.getElementById("dets").value,
+			afterhr = document.getElementById("afterhr").value,
+			jobtype = document.getElementById("jobtype").value;
+
+		if(summary === ""){
+			alert("Fault Summary Name cannot be empty");
+			isEmpty = true;
+		}
+		else if(descr === ""){
+			alert("Fault Description cannot be empty");
+			isEmpty = true;
+		}
+		else if(contractor === ""){
+			alert("Contractor Name cannot be empty");
+			isEmpty = true;
+		}
+		else if(dets === ""){
+			alert("Contractor Details cannot be empty");
+			isEmpty = true;
+		}
+		else if(afterhr === ""){
+			alert("After Hour Details cannot be empty");
+			isEmpty = true;
+		}
+		else if(jobtype=== ""){
+			alert("Job Type cannot be empty");
+			isEmpty = true;
+		}
+		return isEmpty;
+	}
+	//add row
+	function addRow()
+	{
+		// add row
+		//create a new row and cells
+		//get value from input text
+		// set the values into row cells
+		if(!checkEmpty()){
+		var newRow  = table.insertRow(1);
+
+		var	cell1 = newRow.insertCell(0),
+			cell2 = newRow.insertCell(1),
+			cell3 = newRow.insertCell(2),
+			cell4 = newRow.insertCell(3),
+			cell5 = newRow.insertCell(4),
+			cell6 = newRow.insertCell(5),
+			summary = document.getElementById("summary").value,
+			descr = document.getElementById("descr").value,
+			contractor = document.getElementById("contractor").value,
+			dets = document.getElementById("dets").value,
+			afterhr = document.getElementById("afterhr").value,
+			jobtype = document.getElementById("jobtype").value;
+
+
+		cell1.innerHTML = summary;
+		cell2.innerHTML = descr;
+		cell3.innerHTML = contractor;
+		cell4.innerHTML = dets;
+		cell5.innerHTML = afterhr;
+		cell6.innerHTML = jobtype;
+
+		selectedRow();
+	}
+	}
+
+	// display selected row data into input text
+	function selectedRow()
+	{
+		for(var i = 1; i < table.rows.length; i++)
+		{
+			table.rows[i].onclick = function()
+			{
+				//get the selected row index
+				rIndex = this.rowIndex;
+				document.getElementById("summary").value = this.cells[0].innerHTML;
+				document.getElementById("descr").value = this.cells[1].innerHTML;
+				document.getElementById("contractor").value = this.cells[2].innerHTML;
+				document.getElementById("dets").value = this.cells[3].innerHTML;
+				document.getElementById("afterhr").value = this.cells[4].innerHTML;
+				document.getElementById("jobtype").value = this.cells[5].innerHTML;
+
+			};
+		}
+	}
+	selectedRow();
+
+	function updateRow()
+	{
+		var summary = document.getElementById("summary").value,
+			descr = document.getElementById("descr").value,
+			contractor = document.getElementById("contractor").value,
+			dets = document.getElementById("dets").value,
+			afterhr = document.getElementById("afterhr").value,
+			jobtype = document.getElementById("jobtype").value;
+		if(!checkEmpty()){
+		table.rows[rIndex].cells[0].innerHTML = summary;
+		table.rows[rIndex].cells[1].innerHTML = descr;
+		table.rows[rIndex].cells[2].innerHTML = contractor;
+		table.rows[rIndex].cells[3].innerHTML = dets;
+		table.rows[rIndex].cells[4].innerHTML = afterhr;
+		table.rows[rIndex].cells[5].innerHTML = jobtype;
+	}
+	}
+
+	function deleteRow()
+	{
+		table.deleteRow(rIndex);
+		// CLEAR INPUT TEXT 
+		document.getElementById("summary").value ="";
+		document.getElementById("descr").value ="";
+		document.getElementById("contractor").value ="";
+		document.getElementById("dets").value ="";
+		document.getElementById("afterhr").value ="";
+		document.getElementById("jobtype").value ="";
+	}	
+
+</script>
+</body>
+</html>

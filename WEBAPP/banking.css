@@ -1,0 +1,105 @@
+body
+{
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #fff;
+	background: url(gradient.jpg);
+	background-size: cover;
+}
+
+.banking
+{
+	background: black;
+	padding: 40px;
+	width: 500px;
+	height: 700px;
+	margin-top: 20px;
+	margin-left: 180px;
+	margin: 0 auto;
+}
+.banking input[type="submit"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 240px;
+	background: #fb2525;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 60px;
+}
+
+.banking input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+.banking input [type="text"], input[name="username"]
+{
+	border: none;
+	border-bottom: 1px solid #000;
+	background: white;
+	outline: none;
+	height: 20px;
+	width: 240px;
+	color: #000;
+	font-size: 12px;
+}
+.banking input[type="submit"], input[value="Add Item"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 550px;
+	background: #191970;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+
+.banking input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+.banking input[type="submit"], input[value="Update Item"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 480px;
+	background: #191970;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+
+.banking input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+.banking input[type="submit"], input[name="Delete Item"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 480px;
+	background: #191970;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+
+.banking input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}

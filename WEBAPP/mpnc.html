@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MPNC INVENTORY</title>
+		<link rel="stylesheet" type="text/css" href="mpnc.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Play"
+		rel="stylesheet">
+
+		<style>	
+		.container{overflow: hidden}
+		.tab{float: left;}
+		.tab-2{margin-left: 50px;}
+		.tab-2 input{display: block; margin-bottom: 10px;}
+		tr{transition: all .25s ease-in-out}
+		tr:hover{background-color: red;cursor: pointer;}
+		
+#msg {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: yellow;
+	color: #000;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 30%;
+	top: 30px;
+	font-size: 17px;
+}
+#msg.show{
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+@keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+	</style>
+	</head> 
+	<body>
+		<div class="mpnc">
+		<h2 align="center"style="color: #fff;">MPnC INVENTORY</h2><br>
+		<div class="tab tab-2">
+			Item Name: <input type="text" name="itemName" id="itemName">
+			<br>
+			Shift Manager: <input type="text" name="mName" id="mName"/>
+			<br/>
+			Period From- <input type="date" name="period" id="period"/>
+			To:<input type="date" name="date" id="date"/><br/>
+			Time: <input type="time" name="time" id="time">
+			Need: 
+			<select>
+				<option>Have</option>
+				<option>Cook</option>
+				<option>Waste</option>
+			</select>
+			<br><br>
+			Total Shift: <input type="text" name="shiftHours" id="shiftHours"/><br/><br/>
+		</div>
+		<div class="tab tab-1">
+		<table id="table" border="1">
+			<tr>
+				<th>Item Name</th>
+				<th>Shift Manager</th>
+				<th>Period From -</th>
+				<th>To</th>
+				<th>Time</th>
+				<th>Total Shift</th>
+			</tr>
+
+			<tr>
+				<td>Popcorn Chicken</td>
+				<td>Cole Quiambao</td>
+				<td>06-11-2019</td>
+				<td>06-12-2019</td>
+				<td>11am NEED</td>
+				<td>9 hours</td>
+			</tr>
+
+			<tr>
+				<td>Wicked Wings</td>
+				<td>Tominiko Misi</td>
+				<td>06-13-2019</td>
+				<td>06-14-2019</td>
+				<td>1pm HAVE</td>
+				<td>8 hours</td>
+			</tr>
+
+			<tr>
+				<td>Snack Filet</td>
+				<td>Tannu Shree</td>
+				<td>06-15-2019</td>
+				<td>06-15-2019</td>
+				<td>7pm COOK</td>
+				<td>8 hours</td>
+			</tr>
+		</table>
+
+		<input type="submit" value="Add Item" onclick="addRow();">
+		<input type="submit" value="Update Item" onclick="updateRow();">
+		<input type="submit" value="Delete Item" onclick="deleteRow();">
+		<br><br>
+		<a href="index.html"><input type="submit" value="Return">
+		</div>
+		<br>
+		<script>
+				var rIndex,
+					table = document.getElementById("table");
+
+	// check the empty input 
+	function checkEmpty()
+	{
+		var isEmpty = false,
+			itemName = document.getElementById("itemName").value,
+			mName = document.getElementById("mName").value,
+			period = document.getElementById("period").value,
+			date = document.getElementById("date").value,
+			time = document.getElementById("time").value,
+			shiftHours = document.getElementById("shiftHours").value;
+
+		if(itemName === ""){
+			alert("Item Name cannot be empty");
+			isEmpty = true;
+		}
+		else if(mName === ""){
+			alert("Shift Manager cannot be empty");
+			isEmpty = true;
+		}
+		else if(period === ""){
+			alert("Date cannot be empty");
+			isEmpty = true;
+		}
+		else if(date === ""){
+			alert("Date cannot be empty");
+			isEmpty = true;
+		}
+		else if(time === ""){
+			alert("Time cannot be empty");
+			isEmpty = true;
+		}
+		else if(shiftHours === ""){
+			alert("Shift Hours cannot be empty");
+			isEmpty = true;
+		}
+		return isEmpty;
+	}
+	//add row
+	function addRow()
+	{
+		// add row
+		//create a new row and cells
+		//get value from input text
+		// set the values into row cells
+		if(!checkEmpty()){
+		var newRow  = table.insertRow(1);
+
+		var	cell1 = newRow.insertCell(0),
+			cell2 = newRow.insertCell(1),
+			cell3 = newRow.insertCell(2),
+			cell4 = newRow.insertCell(3),
+			cell5 = newRow.insertCell(4),
+			cell6 = newRow.insertCell(5),
+			itemName = document.getElementById("itemName").value,
+			mName = document.getElementById("mName").value,
+			period = document.getElementById("period").value,
+			date = document.getElementById("date").value,
+			time = document.getElementById("time").value,
+			shiftHours = document.getElementById("shiftHours").value;
+
+
+		cell1.innerHTML = itemName;
+		cell2.innerHTML = mName;
+		cell3.innerHTML = period;
+		cell4.innerHTML = date;
+		cell5.innerHTML = time;
+		cell6.innerHTML = shiftHours;
+
+		selectedRow();
+	}
+	}
+
+	// display selected row data into input text
+	function selectedRow()
+	{
+		for(var i = 1; i < table.rows.length; i++)
+		{
+			table.rows[i].onclick = function()
+			{
+				//get the selected row index
+				rIndex = this.rowIndex;
+				document.getElementById("itemName").value = this.cells[0].innerHTML;
+				document.getElementById("mName").value = this.cells[1].innerHTML;
+				document.getElementById("period").value = this.cells[2].innerHTML;
+				document.getElementById("date").value = this.cells[3].innerHTML;
+				document.getElementById("time").value = this.cells[4].innerHTML;
+				document.getElementById("shiftHours").value = this.cells[5].innerHTML;
+
+			};
+		}
+	}
+	selectedRow();
+
+	function updateRow()
+	{
+		var itemName = document.getElementById("itemName").value,
+			mName = document.getElementById("mName").value,
+			period = document.getElementById("period").value,
+			date = document.getElementById("date").value,
+			time = document.getElementById("time").value,
+			shiftHours = document.getElementById("shiftHours").value;
+		if(!checkEmpty()){
+		table.rows[rIndex].cells[0].innerHTML = itemName;
+		table.rows[rIndex].cells[1].innerHTML = mName;
+		table.rows[rIndex].cells[2].innerHTML = period;
+		table.rows[rIndex].cells[3].innerHTML = date;
+		table.rows[rIndex].cells[4].innerHTML = time;
+		table.rows[rIndex].cells[5].innerHTML = shiftHours;
+	}
+	}
+
+	function deleteRow()
+	{
+		table.deleteRow(rIndex);
+		// CLEAR INPUT TEXT 
+		document.getElementById("itemName").value ="";
+		document.getElementById("mName").value ="";
+		document.getElementById("period").value ="";
+		document.getElementById("date").value ="";
+		document.getElementById("time").value ="";
+		document.getElementById("shiftHours").value ="";
+	}	
+
+</script>
+</body>
+</html>

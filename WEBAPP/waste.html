@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Waste Management</title>
+		<link rel="stylesheet" type="text/css" href="waste.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Play"
+		rel="stylesheet">
+
+		<style>	
+		.container{overflow: hidden}
+		.tab{float: left;}
+		.tab-2{margin-left: 50px;}
+		.tab-2 input{display: block; margin-bottom: 10px;}
+		tr{transition: all .25s ease-in-out}
+		tr:hover{background-color: red;cursor: pointer;}
+#msg {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: yellow;
+	color: #000;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 30%;
+	top: 30px;
+	font-size: 17px;
+}
+#msg.show{
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+@keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+
+	</style> 
+	</head>
+	<body>
+		<div class="waste">
+		<h2 align="center"style="color: #fff;">WASTE MANAGEMENT</h2>
+		<div class="tab tab-2">
+		Item No. <input type="text" name="itemNo" id="itemNo">
+		<br>
+		Item Name: <input type="text" name="itemName" id="itemName">
+		<br>
+		Unit: <input type="number" name="unit" id="unit">
+		<select>
+			<option>Kilogram</option>
+			<option>Gram</option>
+			<option>Pound</option>
+			<option>Ton</option>
+		</select>
+		<br>
+		Quantity: <input type="number" name="quantity" id="quantity">
+		<br>
+
+		<div class="tab tab-1">
+		<table id="table" border="1">
+			<tr>
+				<th>Item No</th>
+				<th>Item Name</th>
+				<th>Unit</th>
+				<th>Quantity</th>
+				
+			</tr>
+
+			<tr>
+				<td>123</td>
+				<td>Popcorn Chicken</td>
+				<td>30 kg</td>
+				<td>3 Cartons</td>
+
+			</tr>
+
+			<tr>
+				<td>456</td>
+				<td>Fries</td>
+				<td>60 kg</td>
+				<td>6 Cartons</td>
+
+			</tr>
+
+			<tr>
+				<td>789</td>
+				<td>Lettuce</td>
+				<td>10 kg</td>
+				<td>2 Cartons</td>
+
+			</tr>
+		</table>
+
+		<input type="submit" value="Add Item" onclick="addRow();">
+		<input type="submit" value="Update Item" onclick="updateRow();">
+		<input type="submit" value="Delete Item" onclick="deleteRow();">
+		<br><br>
+		<a href="index.html"><input type="submit" value="Return">
+		</div>
+		<br>
+
+		<script>
+				var rIndex,
+					table = document.getElementById("table");
+
+	// check the empty input 
+	function checkEmpty()
+	{
+		var isEmpty = false,
+			itemNo = document.getElementById("itemNo").value,
+			itemName = document.getElementById("itemName").value,
+			unit = document.getElementById("unit").value,
+			quantity = document.getElementById("quantity").value;
+
+		if(itemNo === ""){
+			alert("Item Number cannot be empty");
+			isEmpty = true;
+		}
+		else if(itemName === ""){
+			alert("Item Name cannot be empty");
+			isEmpty = true;
+		}
+		else if(unit === ""){
+			alert("Unit cannot be empty");
+			isEmpty = true;
+		}
+		else if(quantity === ""){
+			alert("Quantity cannot be empty");
+			isEmpty = true;
+		}
+		return isEmpty;
+	}
+	//add row
+	function addRow()
+	{
+		// add row
+		//create a new row and cells
+		//get value from input text
+		// set the values into row cells
+		if(!checkEmpty()){
+		var newRow  = table.insertRow(1);
+
+		var	cell1 = newRow.insertCell(0),
+			cell2 = newRow.insertCell(1),
+			cell3 = newRow.insertCell(2),
+			cell4 = newRow.insertCell(3),
+			itemNo = document.getElementById("itemNo").value,
+			itemName = document.getElementById("itemName").value,
+			unit = document.getElementById("unit").value,
+			quantity = document.getElementById("quantity").value;
+
+		cell1.innerHTML = itemNo;
+		cell2.innerHTML = itemName;
+		cell3.innerHTML = unit;
+		cell4.innerHTML = quantity;
+
+		selectedRow();
+	}
+	}
+
+	// display selected row data into input text
+	function selectedRow()
+	{
+		for(var i = 1; i < table.rows.length; i++)
+		{
+			table.rows[i].onclick = function()
+			{
+				//get the selected row index
+				rIndex = this.rowIndex;
+				document.getElementById("itemNo").value = this.cells[0].innerHTML;
+				document.getElementById("itemName").value = this.cells[1].innerHTML;
+				document.getElementById("unit").value = this.cells[2].innerHTML;
+				document.getElementById("quantity").value = this.cells[3].innerHTML;
+
+			};
+		}
+	}
+	selectedRow();
+
+	function updateRow()
+	{
+		var itemNo = document.getElementById("itemNo").value,
+			itemName = document.getElementById("itemName").value,
+			unit = document.getElementById("unit").value,
+			quantity = document.getElementById("quantity").value;
+		if(!checkEmpty()){
+		table.rows[rIndex].cells[0].innerHTML = itemNo;
+		table.rows[rIndex].cells[1].innerHTML = itemName;
+		table.rows[rIndex].cells[2].innerHTML = unit;
+		table.rows[rIndex].cells[3].innerHTML = quantity;
+	}
+	}
+
+	function deleteRow()
+	{
+		table.deleteRow(rIndex);
+		// CLEAR INPUT TEXT 
+		document.getElementById("itemNo").value ="";
+		document.getElementById("itemName").value ="";
+		document.getElementById("unit").value ="";
+		document.getElementById("quantity").value ="";
+	}	
+
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Packaging Stocktake</title>
+		<link rel="stylesheet" type="text/css" href="packaging.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Play"
+		rel="stylesheet">
+		<style>	
+		.container{overflow: hidden}
+		.tab{float: left;}
+		.tab-2{margin-left: 50px;}
+		.tab-2 input{display: block; margin-bottom: 10px;}
+		tr{transition: all .25s ease-in-out}
+		tr:hover{background-color: red;cursor: pointer;}
+#msg {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: yellow;
+	color: #000;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 30%;
+	top: 30px;
+	font-size: 17px;
+}
+#msg.show{
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+@keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+
+	</style> 
+	</head>
+	<body>
+	<div class="packaging">
+		<h2 align="center" style="color: #fff;">PACKAGING STOCKTAKE</h2>
+			<div class="tab tab-2">
+			Stocktake List: <input type="text" id="stocklist" placeholder="Enter list">
+		
+			Cost Center: <input type="text" id="cost" placeholder="Enter details">
+			
+			Date: <input type="date" id="date">
+			
+			Bin. No: <input type="text" id="bin" placeholder="Enter number">
+			
+			Item Name: <input type="text" id="itemName" placeholder="Enter Item Name">
+			
+			Quantity: <input type="text" id="quantity" placeholder="Enter Carton and Bags">
+			
+			Unit: <input type="text" id="unit" placeholder="Enter Unit">
+			<br>
+			</div>
+			<div class="tab tab-1">
+			<table id="table" border="1">
+			<tr>
+				<th>Stock List</th>
+				<th>Cost Center</th>
+				<th>Date</th>
+				<th>Bin No</th>
+				<th>Item Name</th>
+				<th>Quantity</th>
+				<th>Unit</th>
+			</tr>
+
+			<tr>
+				<td>Cole Quiambao</td>
+				<td>Botany Downs</td>
+				<td>06-12-2019</td>
+				<td>123</td>
+				<td>Chicken</td>
+				<td>5 Carton</td>
+				<td>15</td>
+
+			</tr>
+
+			<tr>
+				<td>Tominiko Misi</td>
+				<td>Sylvia Park</td>
+				<td>06-13-2019</td>
+				<td>456</td>
+				<td>Spicy Chicken</td>
+				<td>8 Cartons</td>
+				<td>16</td>
+			</tr>
+
+			<tr>
+				<td>Tannu Shree</td>
+				<td>Newmarket</td>
+				<td>06-14-2019</td>
+				<td>789</td>
+				<td>Fries</td>
+				<td>10 Cartons</td>
+				<td>30</td>
+			</tr>
+		</table>
+
+		<input type="submit" value="Add Item" onclick="addRow();">
+		<input type="submit" value="Update Item" onclick="updateRow();">
+		<input type="submit" value="Delete Item" onclick="deleteRow();">
+		<br><br>
+		<a href="index.html"><input type="submit" value="Return">
+		</div>
+		<br>
+	<script>
+			var rIndex,
+				table = document.getElementById("table");
+
+	// check the empty input 
+	function checkEmpty()
+	{
+		var isEmpty = false,
+			stocklist = document.getElementById("stocklist").value,
+			cost = document.getElementById("cost").value,
+			date = document.getElementById("date").value,
+			bin = document.getElementById("bin").value,
+			itemName = document.getElementById("itemName").value,
+			quantity = document.getElementById("quantity").value;
+			unit = document.getElementById("unit").value;
+
+		if(stocklist === ""){
+			alert("Stock list cannot be empty");
+			isEmpty = true;
+		}
+		else if(cost === ""){
+			alert("Cost Center cannot be empty");
+			isEmpty = true;
+		}
+		else if(date === ""){
+			alert("Date cannot be empty");
+			isEmpty = true;
+		}
+		else if(bin === ""){
+			alert("Bin No. cannot be empty");
+			isEmpty = true;
+		}
+		else if(itemName === ""){
+			alert("Item Name cannot be empty");
+			isEmpty = true;
+		}
+		else if(quantity === ""){
+			alert("Quantity cannot be empty");
+			isEmpty = true;
+		}
+		else if(unit === ""){
+			alert("Unit cannot be empty");
+			isEmpty = true;
+		}
+		return isEmpty;
+	}
+	//add row
+	function addRow()
+	{
+		// add row
+		//create a new row and cells
+		//get value from input text
+		// set the values into row cells
+		if(!checkEmpty()){
+		var newRow  = table.insertRow(1);
+
+		var	cell1 = newRow.insertCell(0),
+			cell2 = newRow.insertCell(1),
+			cell3 = newRow.insertCell(2),
+			cell4 = newRow.insertCell(3),
+			cell5 = newRow.insertCell(4),
+			cell6 = newRow.insertCell(5),
+			cell7 = newRow.insertCell(6),
+			stocklist = document.getElementById("stocklist").value,
+			cost = document.getElementById("cost").value,
+			date = document.getElementById("date").value,
+			bin = document.getElementById("bin").value,
+			itemName = document.getElementById("itemName").value,
+			quantity = document.getElementById("quantity").value,
+			unit = document.getElementById("unit").value;
+
+
+		cell1.innerHTML = stocklist;
+		cell2.innerHTML = cost;
+		cell3.innerHTML = date;
+		cell4.innerHTML = bin;
+		cell5.innerHTML = itemName;
+		cell6.innerHTML = quantity;
+		cell6.innerHTML = unit;
+
+		selectedRow();
+	}
+	}
+
+	// display selected row data into input text
+	function selectedRow()
+	{
+		for(var i = 1; i < table.rows.length; i++)
+		{
+			table.rows[i].onclick = function()
+			{
+				//get the selected row index
+				rIndex = this.rowIndex;
+				document.getElementById("stocklist").value = this.cells[0].innerHTML;
+				document.getElementById("cost").value = this.cells[1].innerHTML;
+				document.getElementById("date").value = this.cells[2].innerHTML;
+				document.getElementById("bin").value = this.cells[3].innerHTML;
+				document.getElementById("itemName").value = this.cells[4].innerHTML;
+				document.getElementById("quantity").value = this.cells[5].innerHTML;
+				document.getElementById("unit").value = this.cells[5].innerHTML;
+
+			};
+		}
+	}
+	selectedRow();
+
+	function updateRow()
+	{
+		var stocklist = document.getElementById("stocklist").value,
+			cost = document.getElementById("cost").value,
+			date = document.getElementById("date").value,
+			bin = document.getElementById("bin").value,
+			itemName = document.getElementById("itemName").value,
+			quantity = document.getElementById("quantity").value,
+			unit = document.getElementById("unit").value;
+		if(!checkEmpty()){
+		table.rows[rIndex].cells[0].innerHTML = stocklist;
+		table.rows[rIndex].cells[1].innerHTML = cost;
+		table.rows[rIndex].cells[2].innerHTML = date;
+		table.rows[rIndex].cells[3].innerHTML = bin;
+		table.rows[rIndex].cells[4].innerHTML = itemName;
+		table.rows[rIndex].cells[5].innerHTML = quantity;
+		table.rows[rIndex].cells[5].innerHTML = unit;
+	}
+	}
+
+	function deleteRow()
+	{
+		table.deleteRow(rIndex);
+		// CLEAR INPUT TEXT 
+		document.getElementById("stocklist").value ="";
+		document.getElementById("cost").value ="";
+		document.getElementById("date").value ="";
+		document.getElementById("bin").value ="";
+		document.getElementById("itemName").value ="";
+		document.getElementById("quantity").value ="";
+		document.getElementById("unit").value ="";
+	}	
+
+</script>
+</body>
+</html>

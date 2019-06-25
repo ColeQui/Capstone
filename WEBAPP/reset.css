@@ -1,0 +1,49 @@
+body
+{
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #fff;
+	background: url(gradient.jpg);
+	background-size: cover;
+	
+}
+
+.reset
+{
+	background: black;
+	padding: 50px;
+	width: 250px;
+	height: 450px;
+	margin-top: 200px;
+	margin-left: 180px;
+	margin: 0 auto;
+}
+.reset input [type="password"], input[name="pass"]
+{
+	border: none;
+	border-bottom: 1px solid #000;
+	background: white;
+	outline: none;
+	height: 20px;
+	width: 240px;
+	color: #000;
+	font-size: 12px;
+}
+.reset input[type="button"], input[value="Save Changes"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 240px;
+	background: #fb2525;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 60px;
+}
+
+.reset input[type="button"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}

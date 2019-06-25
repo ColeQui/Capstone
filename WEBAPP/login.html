@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<title>KFC Webpage Login</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet">
+	</head>
+	<body>
+		<div class="loginbox">
+		<img src="avatar00.png" class="avatar">
+			<h1>KFC MANAGEMENT</h1>
+			<!--form start-->
+			<form action="nav.html" method="post" onsubmit="return validation();">
+				<p>Username</p>
+				<input type="text" name="name" id="name" placeholder="Enter Username">
+				<p>Password</p>
+				<input type="password" name="password" id="password" placeholder="Enter Password">
+				<input type="submit" name="submit" value="Login">
+				<div id="container">
+				<a href="reset.html" style="margin-right:-px; font-size: 13px;
+				font-family: Tahoma, Geneva, sans-serif;">Reset your password?</a><br>
+				<a href="forgot.html"style="margin-right:-px; font-size: 13px;
+				font-family: Tahoma, Geneva, sans-serif;">Forgot your password?</a>
+				</div><br><br><br><br>
+				Don't have an account?<a href="create.html">&nbsp;Sign Up</a>
+				</form>
+				<div id="result" style="color: yellow;"></div>
+			<!--form end-->
+
+			<script type="text/javascript">
+			function validation(){
+			var name = document.getElementById('name').value;
+			var password = document.getElementById('password').value;
+			if(name=='' || password=='')
+			{
+				document.getElementById("result").innerHTML = "All field required";
+				return false;
+			}
+			else if(name.length<4){
+				document.getElementById("result").innerHTML = "Name must be atleast 4 characters";
+				return false;
+			}
+			else if(password.length<4){
+				document.getElementById("result").innerHTML = "Password must be atleast 4 characters";
+				return false;
+			}
+			else {
+				return true;
+			}
+			}				
+			</script>
+	</body>
+</html>

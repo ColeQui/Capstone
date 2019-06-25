@@ -1,0 +1,110 @@
+body
+{
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #fff;
+	background: url(gradient.jpg);
+	background-size: cover;
+}
+
+.stocks
+{
+	background: black;
+	padding: 40px;
+	width: 500px;
+	height: 900px;
+	margin-top: 20px;
+	margin-left: 180px;
+	margin: 0 auto;
+}
+.stocks input[type="submit"], input[type="return"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 240px;
+	background: #fb2525;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 60px;
+}
+
+.stocks input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+
+.stocks input [type="text"], input[id="stocklist"], input[id="cost"],
+input[id="date"], input[id="bin"], input[id="itemName"], input[id="quantity"],
+input[id="stocklist"], input[id="unit"]
+{
+	border: none;
+	border-bottom: 1px solid #000;
+	background: white;
+	outline: none;
+	height: 20px;
+	width: 400px;
+	color: #000;
+	font-size: 12px;
+}
+.stocks input[type="submit"], input[value="Add Item"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 550px;
+	background: #191970;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+
+.stocks input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+.stocks input[type="submit"], input[value="Update Item"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 480px;
+	background: #191970;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+
+.stocks input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+.stocks input[type="submit"], input[name="Delete Item"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 480px;
+	background: #191970;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+
+.stocks input[type="submit"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+
+

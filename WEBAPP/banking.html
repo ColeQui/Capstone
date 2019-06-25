@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Cash Management</title>
+		<link rel="stylesheet" type="text/css" href="banking.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Play"
+		rel="stylesheet">
+
+		<style>	
+		.container{overflow: hidden}
+		.tab{float: left;}
+		.tab-2{margin-left: 50px;}
+		.tab-2 input{display: block; margin-bottom: 10px;}
+		tr{transition: all .25s ease-in-out}
+		tr:hover{background-color: red;cursor: pointer;}	
+#msg {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: yellow;
+	color: #000;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 30%;
+	top: 30px;
+	font-size: 17px;
+}
+#msg.show{
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+@keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+
+	</style> 
+	</head>
+	<body>
+		<div class="banking">
+			<h2 align="center" style="color: #fff;">CASH MANAGEMENT</h2>
+			<div class="tab tab-2">
+			Employee No.<input type="text" name="empNo" id="empNo">
+			<br><br>
+			Employee Name:<input type="text" name="empName" id="empName">
+			<br><br>
+			Till:<input type="text" name="till" id="till">
+			<select>
+				<option>FRONT COUNTER 1</option>
+				<option>FRONT COUNTER 2</option>
+				<option>FRONT COUNTER 3</option>
+				<option>FRONT COUNTER 4</option>
+			</select>
+			<br><br><br>
+			</div>
+			<div class="tab tab-1">
+			<table id="table" border="1">
+			<tr>
+				<th>Employee No</th>
+				<th>Employee Name</th>
+				<th>Till</th>
+			</tr>
+
+			<tr>
+				<td>123</td>
+				<td>John Smith</td>
+				<td>FC 1</td>
+			</tr>
+
+			<tr>
+				<td>456</td>
+				<td>Christian D</td>
+				<td>FC 2</td>
+			</tr>
+
+			<tr>
+				<td>789</td>
+				<td>Grey Adams</td>
+				<td>FC 3</td>
+			</tr>
+		</table>
+		<input type="submit" value="Add Item" onclick="addRow();">
+		<input type="submit" value="Update Item" onclick="updateRow();">
+		<input type="submit" value="Delete Item" onclick="deleteRow();">
+		<br><br>
+		<a href="index.html"><input type="submit" value="Return">
+		</div>
+		<br>
+		<script>
+				var rIndex,
+					table = document.getElementById("table");
+
+	// check the empty input 
+	function checkEmpty()
+	{
+		var isEmpty = false,
+			empNo = document.getElementById("empNo").value,
+			empName = document.getElementById("empName").value,
+			till = document.getElementById("till").value;
+
+		if(empNo === ""){
+			alert("Employee Number cannot be empty");
+			isEmpty = true;
+		}
+		else if(empName === ""){
+			alert("Employee Name cannot be empty");
+			isEmpty = true;
+		}
+		else if(till === ""){
+			alert("Till cannot be empty");
+			isEmpty = true;
+		}
+		return isEmpty;
+	}
+	//add row
+	function addRow()
+	{
+		// add row
+		//create a new row and cells
+		//get value from input text
+		// set the values into row cells
+		if(!checkEmpty()){
+		var newRow  = table.insertRow(1);
+
+		var	cell1 = newRow.insertCell(0),
+			cell2 = newRow.insertCell(1),
+			cell3 = newRow.insertCell(2),
+			empNo = document.getElementById("empNo").value,
+			empName = document.getElementById("empName").value,
+			till = document.getElementById("till").value;
+
+		cell1.innerHTML = empNo;
+		cell2.innerHTML = empName;
+		cell3.innerHTML = till;
+
+		selectedRow();
+	}
+	}
+
+	// display selected row data into input text
+	function selectedRow()
+	{
+		for(var i = 1; i < table.rows.length; i++)
+		{
+			table.rows[i].onclick = function()
+			{
+				//get the selected row index
+				rIndex = this.rowIndex;
+				document.getElementById("empNo").value = this.cells[0].innerHTML;
+				document.getElementById("empName").value = this.cells[1].innerHTML;
+				document.getElementById("till").value = this.cells[2].innerHTML;
+
+			};
+		}
+	}
+	selectedRow();
+
+	function updateRow()
+	{
+		var empNo = document.getElementById("empNo").value,
+			empName = document.getElementById("empName").value,
+			till = document.getElementById("till").value;
+		if(!checkEmpty()){
+		table.rows[rIndex].cells[0].innerHTML = empNo;
+		table.rows[rIndex].cells[1].innerHTML = empName;
+		table.rows[rIndex].cells[2].innerHTML = till;
+	}
+	}
+
+	function deleteRow()
+	{
+		table.deleteRow(rIndex);
+		// CLEAR INPUT TEXT 
+		document.getElementById("empNo").value ="";
+		document.getElementById("empName").value ="";
+		document.getElementById("till").value ="";
+	}	
+
+</script>
+
+</body>
+</html>

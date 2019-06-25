@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>KFC Webpage Login</title>
+		<link rel="stylesheet" type="text/css" href="create.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Play"
+		rel="stylesheet">
+			<style>	
+#msg {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: yellow;
+	color: #000;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: 30%;
+	top: 30px;
+	font-size: 17px;
+}
+#msg.show{
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@keyframes fadein {
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+@keyframes fadeout {
+	from{top: 30; opacity: 1;}
+	to{top: 0px; opacity: 0;}
+}
+
+			</style> 
+		
+	</head>
+	<body>
+	<div class="create account">
+		<form>
+		<h2 align="center" style="color: #fff;">Create an Account</h2>
+		<p>Manager's ID</p>
+		<input type="text" name="username" placeholder="Enter Manager ID">
+		<br>
+		<p>First Name</p>
+		<input type="text" name="username" placeholder="Enter first name">
+		<br>
+		<p>Last Name</p>
+		<input type="text" name="username" placeholder="Enter last name">
+		<br>
+		<p>Password</p>
+		<input type="text" name="password" placeholder="Enter Password">
+		<br>
+		<p>Confirm Password</p>
+		<input type="text" name="password" placeholder="Confirm Password">
+		<br>
+		<p>Email Address</p>
+		<input type="text" name="username" placeholder="Email Address">
+		<br><br><br>
+		<input type="button" name="" value="Create" 
+		onclick="myFunction()"/>
+		<br><br><br>
+		<div id="msg">Congratulations! You sign up successfully</div>
+
+		<script>
+		function myFunction(){
+			var x = document.getElementById("msg");
+			x.className = "show";
+			setTimeout(function(){ x.className = 
+			x.className.replace("show", ""); }, 3000);
+		}
+		</script>
+				Already have account?<a href="login.html"
+				style="text-decoration: none; font-family: 'Play', sans-serif;
+				color: yellow;">&nbsp;LogIn</a>
+		</form>
+	</div>
+	</body>
+</html>

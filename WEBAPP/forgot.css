@@ -1,0 +1,65 @@
+body
+{
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #fff;
+	background: url(gradient.jpg);
+	background-size: cover;
+}
+
+.forgot
+{
+	background: black;
+	padding: 40px;
+	width: 250px;
+	height: 450px;
+	margin-top: 20px;
+	margin-left: 180px;
+	margin: 0 auto;
+}
+
+h2
+{
+	margin-top: 30px;
+	margin-left: 5px;
+}
+.forgot input [type="button"], input[name="username"]
+{
+	border: none;
+	border-bottom: 1px solid #000;
+	background: white;
+	outline: none;
+	height: 20px;
+	width: 240px;
+	color: #000;
+	font-size: 12px;
+}
+
+.forgot input[type="button"], input[value="Send"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	width: 250px;
+	background: #fb2525;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 20px;
+}
+
+.forgot input[type="button"]:hover
+{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+.forgot a{
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 20px;
+	color: darkgrey;
+}
+
+.forgot a:hover
+{
+	color: #ffc107;
+}
